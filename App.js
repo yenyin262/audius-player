@@ -7,7 +7,15 @@ import {
   // trendingTracks,
 } from "./services/audius";
 import TracksList from "./components/TracksList";
-import { trendingTracksMock } from "./services/audiusMock";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import TracksListScreen from "./screen/TracksList/TracksListScreen";
+import HomeScreen from "./screen/Home/HomeScreen";
+
+import { Ionicons } from "@expo/vector-icons";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   /**
@@ -20,7 +28,6 @@ export default function App() {
    */
   const [track, setTrack] = React.useState();
   const lastTrack = React.useRef(null);
-  const [trackList, setTrackList] = React.useState([]);
 
   React.useEffect(() => {
     // Unload sound when track is changed
@@ -48,12 +55,6 @@ export default function App() {
     }
   }, [track]);
 
-  async function getTrendingTrack() {
-    // const tracks = await trendingTracks();
-    const tracks = trendingTracksMock();
-    setTrackList(tracks.data);
-  }
-
   function playNewTrack(trackId) {
     setTrack(trackId);
   }
@@ -69,16 +70,36 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <Button title="Log trending" onPress={getTrendingTrack} />
-      <Button title="Play Track" onPress={playTrack} />
-      <Button title="Pause Track" onPress={stopTrack} />
-      {trackList.length > 0 && (
-        <TracksList tracks={trackList} onPress={playNewTrack} />
-      )}
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+            if (route.name === "HomeScreen") {
+              iconName = focused ? "ios-home" : "ios-home-outline";
+            } else if (route.name === "TracksListScreen") {
+              iconName = focused ? "musical-notes-sharp" : "ios-list";
+            }
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+      >
+        <Tab.Screen name="HomeScreen">
+          {(props) => <HomeScreen {...props} />}
+        </Tab.Screen>
+
+        <Tab.Screen name="TracksListScreen">
+          {(props) => (
+            <TracksListScreen
+              {...props}
+              playNewTrack={playNewTrack}
+              stopTrack={stopTrack}
+              playTrack={playTrack}
+            />
+          )}
+        </Tab.Screen>
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
