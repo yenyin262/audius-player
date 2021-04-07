@@ -32,8 +32,6 @@ const Item = ({ id, title, onPress, artwork, name }) => {
 };
 
 const TracksList = ({ tracks, onPress }) => {
-  console.log(tracks, "find tracks ");
-
   const renderItem = ({ item }) => (
     <Item
       id={item.id}
