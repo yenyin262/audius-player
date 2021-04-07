@@ -13,9 +13,4 @@ export default function HomeScreen({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  // title: {
-  //   textAlign: "center",
-  //   marginVertical: 8,
-  // },
-});
+const styles = StyleSheet.create({});

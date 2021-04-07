@@ -70,24 +70,8 @@ export default function App() {
   }
 
   return (
-    // <View style={styles.container}>
-    //   <Text>Open up App.js to start working on your app!</Text>
-    //   <Button title="Log trending" onPress={getTrendingTrack} />
-    //   <Button title="Play Track" onPress={playTrack} />
-    //   <Button title="Pause Track" onPress={stopTrack} />
-    //   {trackList.length > 0 && (
-    //     <TracksList tracks={trackList} onPress={playNewTrack} />
-    //   )}
-    //   <StatusBar style="auto" />
-    // </View>
     <NavigationContainer>
       <Tab.Navigator
-        // tabBarOptions={{
-        //   activeTintColor: "tomato",
-        //   inactiveTintColor: "gray",
-        //   activeBackgroundColor: "#c4461c",
-        //   inactiveBackgroundColor: "#b55031",
-        // }}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
