@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import {
   SafeAreaView,
@@ -10,8 +10,19 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import ButtonIcon from "./ButtonIcon/ButtonIcon";
 
 const Item = ({ id, title, onPress, artwork, name }) => {
+  const [heartCount, setHeartCount] = useState(0);
+
+  const onHeartPress = () => {
+    setHeartCount(heartCount + 1);
+  };
+
+  const onValuePress = () => {
+    console.log("new component to show how many likes");
+  };
   function onTrackClick() {
     onPress(id);
   }
@@ -26,6 +37,14 @@ const Item = ({ id, title, onPress, artwork, name }) => {
         <Text style={styles.name} ellipsizeMode="tail" numberOfLines={1}>
           {name}
         </Text>
+        <View>
+          <ButtonIcon
+            onIconPress={onHeartPress}
+            value={heartCount}
+            onValuePress={onValuePress}
+            icon={(props) => <Ionicons name="heart" {...props} />}
+          />
+        </View>
       </View>
     </TouchableOpacity>
   );
