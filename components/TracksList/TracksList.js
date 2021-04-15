@@ -11,44 +11,46 @@ import {
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import ButtonIcon from "./ButtonIcon/ButtonIcon";
+import ButtonIcon from "../ButtonIcon/ButtonIcon";
+import Item from "../Item/Item";
+import ItemDetails from "../ItemDetails/ItemDetails";
 
-const Item = ({ id, title, onPress, artwork, name }) => {
-  const [heartCount, setHeartCount] = useState(0);
+// const Item = ({ id, title, onPress, artwork, name }) => {
+//   const [heartCount, setHeartCount] = useState(0);
 
-  const onHeartPress = () => {
-    setHeartCount(heartCount + 1);
-  };
+//   const onHeartPress = () => {
+//     setHeartCount(heartCount + 1);
+//   };
 
-  const onValuePress = () => {
-    console.log("new component to show how many likes");
-  };
-  function onTrackClick() {
-    onPress(id);
-  }
+//   const onValuePress = () => {
+//     console.log("new component to show how many likes");
+//   };
+//   function onTrackClick() {
+//     onPress(id);
+//   }
 
-  return (
-    <TouchableOpacity style={styles.item} onPress={onTrackClick}>
-      <Image source={{ uri: artwork }} style={{ width: 80, height: 80 }} />
-      <View style={styles.contentContainer}>
-        <Text style={styles.title} ellipsizeMode="tail" numberOfLines={1}>
-          {title}
-        </Text>
-        <Text style={styles.name} ellipsizeMode="tail" numberOfLines={1}>
-          {name}
-        </Text>
-        <View>
-          <ButtonIcon
-            onIconPress={onHeartPress}
-            value={heartCount}
-            onValuePress={onValuePress}
-            icon={(props) => <Ionicons name="heart" {...props} />}
-          />
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
-};
+//   return (
+//     <TouchableOpacity style={styles.item} onPress={onTrackClick}>
+//       <Image source={{ uri: artwork }} style={{ width: 80, height: 80 }} />
+//       <View style={styles.contentContainer}>
+//         <Text style={styles.title} ellipsizeMode="tail" numberOfLines={1}>
+//           {title}
+//         </Text>
+//         <Text style={styles.name} ellipsizeMode="tail" numberOfLines={1}>
+//           {name}
+//         </Text>
+//         <View>
+//           <ButtonIcon
+//             onIconPress={onHeartPress}
+//             value={heartCount}
+//             onValuePress={onValuePress}
+//             icon={(props) => <Ionicons name="heart" {...props} />}
+//           />
+//         </View>
+//       </View>
+//     </TouchableOpacity>
+//   );
+// };
 
 const TracksList = ({ tracks, onPress }) => {
   console.log(tracks, "find tracks ");
@@ -60,6 +62,8 @@ const TracksList = ({ tracks, onPress }) => {
       onPress={onPress}
       artwork={item.artwork["480x480"]}
       name={item.user.name}
+      playCount={item.play_count}
+      duration={item.duration}
     />
   );
 

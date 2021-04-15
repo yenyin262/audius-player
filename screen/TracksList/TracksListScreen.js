@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
-import TracksList from "../../components/TracksList";
+import TracksList from "../../components/TracksList/TracksList";
 import { trendingTracksMock } from "../../services/audiusMock";
 
 export default function TracksListScreen({

@@ -6,7 +6,7 @@ import {
   getStreamTrackSource,
   // trendingTracks,
 } from "./services/audius";
-import TracksList from "./components/TracksList";
+import TracksList from "./components/TracksList/TracksList";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
