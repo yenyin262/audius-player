@@ -1,28 +1,13 @@
-import React, { useState } from "react";
-import { ScrollView } from "react-native";
-import {
-  SafeAreaView,
-  View,
-  FlatList,
-  StyleSheet,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import ButtonIcon from "../ButtonIcon/ButtonIcon";
+import React from "react";
+import { View, FlatList, StyleSheet, StatusBar } from "react-native";
 import Item from "../Item/Item";
-import ItemDetails from "../ItemDetails/ItemDetails";
 
 const TracksList = ({ tracks, onPress }) => {
-  console.log(tracks, "find tracks ");
-
   const renderItem = ({ item }) => (
     <Item
       id={item.id}
       title={item.title}
-      onPress={onPress}
+      onPress={() => onPress(item)}
       artwork={item.artwork["480x480"]}
       name={item.user.name}
       playCount={item.play_count}
@@ -31,13 +16,13 @@ const TracksList = ({ tracks, onPress }) => {
   );
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <FlatList
         data={tracks}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />
-    </ScrollView>
+    </View>
   );
 };
 

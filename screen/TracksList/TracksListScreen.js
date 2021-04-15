@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import TracksList from "../../components/TracksList/TracksList";
+import { usePlayer } from "../../context/player";
 import { trendingTracksMock } from "../../services/audiusMock";
 
-export default function TracksListScreen({
-  navigation,
-  playNewTrack,
-  playTrack,
-  stopTrack,
-}) {
+export default function TracksListScreen({ navigation }) {
+  const { track, play, pause } = usePlayer();
   const [trackList, setTrackList] = React.useState([]);
 
   useEffect(() => {
@@ -23,15 +20,14 @@ export default function TracksListScreen({
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Tracks List Screen</Text>
+      {track && <Text>Now playing {track.title}</Text>}
       <Button
         title="Return Home"
         onPress={() => navigation.navigate("HomeScreen")}
       />
-      <Button title="Play Track" onPress={playTrack} />
-      <Button title="Pause Track" onPress={stopTrack} />
-      {trackList.length > 0 && (
-        <TracksList tracks={trackList} onPress={playNewTrack} />
-      )}
+      <Button title="Play Track" onPress={() => play()} />
+      <Button title="Pause Track" onPress={pause} />
+      {trackList.length > 0 && <TracksList tracks={trackList} onPress={play} />}
     </View>
   );
 }
