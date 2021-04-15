@@ -96,13 +96,6 @@ const Item = ({ id, title, onPress, artwork, name, playCount, duration }) => {
 };
 export default Item;
 const styles = StyleSheet.create({
-  //   container: {
-  //     flex: 1,
-  //     marginTop: StatusBar.currentHeight || 0,
-  //     backgroundColor: "black",
-  //     width: "100%",
-  //   },
-
   contentContainer: {
     flex: 1,
     width: "100%",
