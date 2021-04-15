@@ -16,7 +16,7 @@ export default function ButtonIcon(props) {
         <Text
           style={{
             color: "white",
-            fontSize: "20px",
+            fontSize: 20,
           }}
         >
           {value}
