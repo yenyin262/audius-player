@@ -9,6 +9,11 @@ export default function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate("TracksListScreen")}
         color="green"
       />
+      <Button
+        title="Go to PlayerScreen"
+        onPress={() => navigation.navigate("PlayerScreen")}
+        color="green"
+      />
     </View>
   );
 }

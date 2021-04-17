@@ -15,11 +15,11 @@ import HomeScreen from "./screen/Home/HomeScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import { PlayerContextProvider } from "./context/player";
+import PlayerScreen from "./screen/PlayerScreen/PlayerScreen";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-
   return (
     <PlayerContextProvider>
       <NavigationContainer>
@@ -31,6 +31,10 @@ export default function App() {
                 iconName = focused ? "ios-home" : "ios-home-outline";
               } else if (route.name === "TracksListScreen") {
                 iconName = focused ? "musical-notes-sharp" : "ios-list";
+              } else if (route.name === "PlayerScreen") {
+                iconName = focused
+                  ? "play-circle-sharp"
+                  : "play-circle-outline";
               }
               return <Ionicons name={iconName} size={size} color={color} />;
             },
@@ -42,6 +46,9 @@ export default function App() {
 
           <Tab.Screen name="TracksListScreen">
             {(props) => <TracksListScreen {...props} />}
+          </Tab.Screen>
+          <Tab.Screen name="PlayerScreen">
+            {(props) => <PlayerScreen {...props} />}
           </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>

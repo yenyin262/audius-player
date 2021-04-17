@@ -17,6 +17,11 @@ export default function TracksListScreen({ navigation }) {
     getTrendingTrack();
   }, []);
 
+  const navigateToPlayer = (track) => {
+    play(track);
+    navigation.navigate("PlayerScreen");
+  };
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Tracks List Screen</Text>
@@ -27,7 +32,9 @@ export default function TracksListScreen({ navigation }) {
       />
       <Button title="Play Track" onPress={() => play()} />
       <Button title="Pause Track" onPress={pause} />
-      {trackList.length > 0 && <TracksList tracks={trackList} onPress={play} />}
+      {trackList.length > 0 && (
+        <TracksList tracks={trackList} onPress={navigateToPlayer} />
+      )}
     </View>
   );
 }

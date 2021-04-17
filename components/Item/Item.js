@@ -14,8 +14,11 @@ import {
 } from "react-native";
 import ItemDetails from "../ItemDetails/ItemDetails";
 import { ScrollView } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
+import { usePlayer } from "../../context/player";
 
 const Item = ({ id, title, onPress, artwork, name, playCount, duration }) => {
+  const navigation = useNavigation();
   const [heartCount, setHeartCount] = useState(0);
   const [repeatCount, setRepeatCount] = useState(0);
 
@@ -33,10 +36,12 @@ const Item = ({ id, title, onPress, artwork, name, playCount, duration }) => {
   function onTrackClick() {
     onPress(id);
   }
+  const { track, play, pause } = usePlayer();
 
   return (
     <>
-      <TouchableOpacity style={styles.item} onPress={onTrackClick}>
+      {/* <TouchableOpacity style={styles.item} onPress={onTrackClick}> */}
+      <TouchableOpacity style={styles.item} onPress={onPress}>
         <Image source={{ uri: artwork }} style={{ width: 80, height: 80 }} />
         <View style={styles.contentContainer}>
           <Text style={styles.title} ellipsizeMode="tail" numberOfLines={1}>

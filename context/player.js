@@ -19,6 +19,7 @@ const PlayerContextProvider = ({ children }) => {
    * @type {[string, Function]} TrackState
    */
   const [currentTrack, setCurrentTrack] = React.useState();
+  const [isPlaying, setIsPlaying] = React.useState(false);
   const lastTrackId = React.useRef(null);
 
   React.useEffect(() => {
@@ -37,30 +38,48 @@ const PlayerContextProvider = ({ children }) => {
       track &&
       (lastTrackId.current === null || lastTrackId.current !== track.id)
     ) {
+      setCurrentTrack(track);
       const { sound } = await Audio.Sound.createAsync(
         await getStreamTrackSource(track.id)
       );
-      setCurrentTrack(track);
       setSound(sound);
 
       lastTrackId.current = track.id;
-      await sound.playAsync();
+      _play();
     } else if (sound && (await sound.getStatusAsync()).isLoaded) {
       console.log("its sound");
-      await sound.playAsync();
+      _play();
     } else {
       alert("can't play");
     }
   }
 
   async function pause() {
-    if (sound && (await sound.getStatusAsync()).isPlaying) {
-      sound.pauseAsync();
+    if (sound && isPlaying) {
+      const { isPlaying } = await sound.pauseAsync();
+      setIsPlaying(isPlaying);
+    }
+  }
+
+  async function _play() {
+    if (sound && !isPlaying) {
+      const { isPlaying } = await sound.playAsync();
+      setIsPlaying(isPlaying);
+    }
+  }
+
+  async function toggle() {
+    if (isPlaying) {
+      pause();
+    } else {
+      _play();
     }
   }
 
   return (
-    <PlayerProvider value={{ track: currentTrack, play, pause }}>
+    <PlayerProvider
+      value={{ track: currentTrack, isPlaying, toggle, play, pause }}
+    >
       {children}
     </PlayerProvider>
   );
