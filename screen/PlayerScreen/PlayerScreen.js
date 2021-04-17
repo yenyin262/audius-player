@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import { View, Text, Image } from "react-native";
+import React from "react";
+import { View, Text, Image, Dimensions } from "react-native";
 import ButtonIcon from "../../components/ButtonIcon/ButtonIcon";
-import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import { MaterialIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import { usePlayer } from "../../context/player";
 import PlayerIconControl from "../../components/PlayerIconControl/PlayerIconControl";
+
+const { width } = Dimensions.get("window");
+const imageSize = width - 96;
 
 export default function PlayerScreen({}) {
   const { track, isPlaying, play, pause, toggle } = usePlayer();
@@ -13,110 +14,126 @@ export default function PlayerScreen({}) {
     <View
       style={{
         flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "center",
-        marginTop: 100,
-        flexDirection: "column",
         backgroundColor: "black",
+        padding: 24,
       }}
     >
-      <Text style={{ color: "hotpink", fontSize: 30 }}>NOW PLAYING</Text>
-      <Image
-        source={{ uri: track.artwork["480x480"] }}
-        style={{
-          width: 350,
-          height: 350,
-          marginTop: 20,
-        }}
-      />
-
-      <Text
-        style={{
-          color: "grey",
-          textAlign: "center",
-          fontSize: 24,
-          marginTop: 40,
-        }}
-      >
-        {track.title}
-      </Text>
-      <Text style={{ color: "hotpink", fontSize: 24, marginTop: 10 }}>
-        {track.name}
-      </Text>
-
       <View
         style={{
-          flex: 1,
-          flexDirection: "row",
-          justifyContent: "space-between",
           alignItems: "center",
-          paddingHorizontal: 50,
+          flexBasis: imageSize,
+          marginBottom: 24,
+          width: "100%",
         }}
       >
-        <PlayerIconControl
-          icon={(props) => <FontAwesome name="repeat" {...props} />}
-        />
-
-        <PlayerIconControl
-          icon={(props) => <Ionicons name="play-back-sharp" {...props} />}
-        />
-        <PlayerIconControl
-          icon={(props) => (
-            <Ionicons
-              name={isPlaying ? "md-pause-sharp" : "play-circle-sharp"}
-              {...props}
-              onPress={toggle}
-              size={45}
-            />
-          )}
-        />
-        <PlayerIconControl
-          icon={(props) => <Ionicons name="play-forward-sharp" {...props} />}
-        />
-
-        <PlayerIconControl
-          icon={(props) => <Ionicons name="md-shuffle" {...props} />}
+        <Image
+          source={{ uri: track.artwork["480x480"] }}
+          style={{
+            width: imageSize,
+            height: imageSize,
+          }}
         />
       </View>
-
       <View
         style={{
           flex: 1,
-          flexDirection: "row",
-          marginHorizontal: 10,
-          marginVertical: 10,
         }}
       >
+        <View style={{ flex: 1, marginBottom: 10 }}>
+          <Text
+            style={{
+              textAlign: "center",
+              color: "grey",
+              fontSize: 24,
+              marginBottom: 5,
+            }}
+          >
+            {track.title}
+          </Text>
+          <Text
+            style={{
+              color: "hotpink",
+              textAlign: "center",
+              fontSize: 18,
+            }}
+          >
+            {track.user.name}
+          </Text>
+        </View>
+
         <View
           style={{
-            flex: 6,
+            flex: 2,
             flexDirection: "row",
             justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
-          <ButtonIcon
-            onIconPress={() => {}}
-            value={0}
-            onValuePress={() => {}}
-            icon={(props) => <Ionicons name="repeat-sharp" {...props} />}
+          <PlayerIconControl
+            icon={(props) => (
+              <MaterialIcons name="replay" {...props} size={30} />
+            )}
           />
-          <ButtonIcon
-            onIconPress={() => {}}
-            value={100}
-            onValuePress={() => {}}
-            icon={(props) => <Ionicons name="heart" {...props} />}
+
+          <PlayerIconControl
+            icon={(props) => (
+              <MaterialIcons name="skip-previous" {...props} size={50} />
+            )}
           />
-          <ButtonIcon icon={(props) => <Entypo name="forward" {...props} />} />
+          <PlayerIconControl
+            icon={(props) => (
+              <MaterialIcons
+                name={isPlaying ? "pause-circle-filled" : "play-circle-filled"}
+                {...props}
+                onPress={toggle}
+                size={90}
+              />
+            )}
+          />
+          <PlayerIconControl
+            icon={(props) => (
+              <MaterialIcons name="skip-next" {...props} size={50} />
+            )}
+          />
+
+          <PlayerIconControl
+            icon={(props) => (
+              <MaterialIcons name="shuffle" {...props} size={30} />
+            )}
+          />
         </View>
+
         <View
           style={{
-            flex: 1,
             flexDirection: "row",
           }}
         >
-          <ButtonIcon
-            icon={(props) => <Ionicons name="ellipsis-vertical" {...props} />}
-          />
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <ButtonIcon
+              onIconPress={() => {}}
+              value={0}
+              onValuePress={() => {}}
+              icon={(props) => <Ionicons name="repeat-sharp" {...props} />}
+            />
+            <ButtonIcon
+              onIconPress={() => {}}
+              value={100}
+              onValuePress={() => {}}
+              icon={(props) => <Ionicons name="heart" {...props} />}
+            />
+            <ButtonIcon
+              icon={(props) => <Entypo name="forward" {...props} />}
+            />
+          </View>
+          <View>
+            <Ionicons name="ellipsis-vertical" size={30} color="white" />
+          </View>
         </View>
       </View>
     </View>

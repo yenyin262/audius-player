@@ -5,7 +5,13 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 export default function ButtonIcon(props) {
   const { onIconPress, onValuePress, value, icon: Icon } = props;
   return (
-    <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "center",
+      }}
+    >
       <Icon
         size={35}
         color="white"
