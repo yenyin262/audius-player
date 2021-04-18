@@ -9,7 +9,7 @@ const { width } = Dimensions.get("window");
 const imageSize = width - 96;
 
 export default function PlayerScreen({}) {
-  const { track, isPlaying, play, pause, toggle } = usePlayer();
+  const { track, isPlaying, toggle } = usePlayer();
   return (
     <View
       style={{

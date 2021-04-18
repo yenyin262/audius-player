@@ -23,6 +23,18 @@ const PlayerContextProvider = ({ children }) => {
   const lastTrackId = React.useRef(null);
 
   React.useEffect(() => {
+    Audio.setAudioModeAsync({
+      allowsRecordingIOS: false,
+      staysActiveInBackground: false,
+      interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+      playsInSilentModeIOS: true,
+      shouldDuckAndroid: true,
+      interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+      playThroughEarpieceAndroid: false,
+    });
+  }, []);
+
+  React.useEffect(() => {
     // Unload sound when track is changed
     return sound
       ? () => {
@@ -32,43 +44,36 @@ const PlayerContextProvider = ({ children }) => {
   }, [sound]);
 
   async function play(track) {
-    if (sound) pause();
+    if (isPlaying) pause();
 
-    if (
-      track &&
-      (lastTrackId.current === null || lastTrackId.current !== track.id)
-    ) {
-      setCurrentTrack(track);
+    const nextTrack = track || currentTrack;
+
+    if (lastTrackId.current === null || lastTrackId.current !== nextTrack.id) {
+      setCurrentTrack(nextTrack);
+      setIsPlaying(true);
       const { sound } = await Audio.Sound.createAsync(
-        await getStreamTrackSource(track.id)
+        await getStreamTrackSource(track.id),
+        {
+          shouldPlay: true,
+        }
       );
       setSound(sound);
-
-      lastTrackId.current = track.id;
-      _play();
-    } else if (sound && (await sound.getStatusAsync()).isLoaded) {
-      console.log("its sound");
-      _play();
     } else {
-      alert("can't play");
+      sound.playAsync();
     }
   }
 
-  async function pause() {
-    if (sound && isPlaying) {
-      const { isPlaying } = await sound.pauseAsync();
-      setIsPlaying(isPlaying);
-    }
+  function pause() {
+    setIsPlaying(false);
+    sound.pauseAsync();
   }
 
-  async function _play() {
-    if (sound && !isPlaying) {
-      const { isPlaying } = await sound.playAsync();
-      setIsPlaying(isPlaying);
-    }
+  function _play() {
+    setIsPlaying(true);
+    sound.playAsync();
   }
 
-  async function toggle() {
+  function toggle() {
     if (isPlaying) {
       pause();
     } else {

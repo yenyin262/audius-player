@@ -18,8 +18,8 @@ export default function TracksListScreen({ navigation }) {
   }, []);
 
   const navigateToPlayer = (track) => {
-    play(track);
     navigation.navigate("PlayerScreen");
+    play(track);
   };
 
   return (

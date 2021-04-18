@@ -1,10 +1,8 @@
 import React from "react";
 import { View, FlatList, StyleSheet, StatusBar } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import Item from "../Item/Item";
 
-const TracksList = ({ tracks, onPress, navigation }) => {
-  console.log(navigation, "navigate");
+const TracksList = ({ tracks, onPress }) => {
   const renderItem = ({ item }) => (
     <Item
       id={item.id}
@@ -22,13 +20,6 @@ const TracksList = ({ tracks, onPress, navigation }) => {
       <FlatList
         data={tracks}
         renderItem={renderItem}
-        // renderItem={({ renderItem }) => (
-        //   <TouchableOpacity
-        //     onPress={() => navigation.navigate("PlayerScreen", renderItem)}
-        //   >
-        //     <Item />
-        //   </TouchableOpacity>
-        // )}
         keyExtractor={(item) => item.id}
       />
     </View>
