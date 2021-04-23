@@ -4,18 +4,27 @@ import ButtonIcon from "../../components/ButtonIcon/ButtonIcon";
 import { MaterialIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import { usePlayer } from "../../context/player";
 import PlayerIconControl from "../../components/PlayerIconControl/PlayerIconControl";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const { width } = Dimensions.get("window");
 const imageSize = width - 96;
 
-export default function PlayerScreen({}) {
-  const { track, isPlaying, toggle } = usePlayer();
+export default function PlayerScreen({ navigation }) {
+  const { track, isPlaying, toggle, play } = usePlayer();
+
+  const navigateToUserProfile = (track) => {
+    navigation.navigate("UserProfileScreen");
+    // return track;
+    play(track);
+  };
   return (
     <View
       style={{
         flex: 1,
         backgroundColor: "black",
         padding: 24,
+        marginTop: 70,
+        paddingTop: 100,
       }}
     >
       <View
@@ -26,13 +35,15 @@ export default function PlayerScreen({}) {
           width: "100%",
         }}
       >
-        <Image
-          source={{ uri: track.artwork["480x480"] }}
-          style={{
-            width: imageSize,
-            height: imageSize,
-          }}
-        />
+        <TouchableOpacity onPress={navigateToUserProfile}>
+          <Image
+            source={{ uri: track.artwork["480x480"] }}
+            style={{
+              width: imageSize,
+              height: imageSize,
+            }}
+          />
+        </TouchableOpacity>
       </View>
       <View
         style={{
