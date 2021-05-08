@@ -43,11 +43,9 @@ export default function PlayerScreen({ navigation }) {
       setPosition(new Date(status.positionMillis).toISOString().substr(15, 4));
     }
   }
-  
-  const navigateToUserProfile = (track) => {
-    navigation.navigate("UserProfileScreen");
-    // return track;
-    play(track);
+
+  const navigateToUserProfile = () => {
+    navigation.navigate("UserProfileScreen", { userId: track.user.id });
   };
 
   return (
@@ -56,11 +54,10 @@ export default function PlayerScreen({ navigation }) {
         flex: 1,
         backgroundColor: "black",
         padding: 24,
-        marginTop: 70,
-        paddingTop: 100,
       }}
     >
-      <View
+      <TouchableOpacity
+        onPress={navigateToUserProfile}
         style={{
           alignItems: "center",
           flexBasis: imageSize,
@@ -68,16 +65,14 @@ export default function PlayerScreen({ navigation }) {
           width: "100%",
         }}
       >
-        <TouchableOpacity onPress={navigateToUserProfile}>
-          <Image
-            source={{ uri: track.artwork["480x480"] }}
-            style={{
-              width: imageSize,
-              height: imageSize,
-            }}
-          />
-        </TouchableOpacity>
-      </View>
+        <Image
+          source={{ uri: track.artwork["480x480"] }}
+          style={{
+            width: imageSize,
+            height: imageSize,
+          }}
+        />
+      </TouchableOpacity>
       <View
         style={{
           flex: 1,
