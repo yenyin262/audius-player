@@ -36,9 +36,11 @@ const UserProfileScreen = ({ route, navigation }) => {
   };
 
   if (isLoading) {
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Loading</Text>
-    </View>;
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Text>Loading</Text>
+      </View>
+    );
   }
 
   if (!user) {
@@ -91,7 +93,7 @@ const UserProfileScreen = ({ route, navigation }) => {
                 marginBottom: 5,
               }}
             >
-              {user.handle}
+              {user.name}
             </Text>
             <Text
               style={{
