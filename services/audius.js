@@ -91,3 +91,22 @@ export async function trendingTracks() {
     },
   });
 }
+
+/**
+ * Returns a list of trending tracks
+ * https://audiusproject.github.io/api-docs/#get-user
+ *
+ * @export
+ * @param {string} id
+ * @returns {object} - User profile data
+ */
+export async function getUserProfile(id) {
+  const response = await audiusFetch(`/v1/users/${id}`, {
+    method: "GET",
+
+    headers: {
+      Accept: "application/json",
+    },
+  });
+  return response.data;
+}
