@@ -83,7 +83,7 @@ const PlayerContextProvider = ({ children }) => {
 
   return (
     <PlayerProvider
-      value={{ track: currentTrack, isPlaying, toggle, play, pause }}
+      value={{ track: currentTrack, isPlaying, sound, toggle, play, pause }}
     >
       {children}
     </PlayerProvider>
