@@ -14,6 +14,11 @@ export default function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate("PlayerScreen")}
         color="green"
       />
+      <Button
+        title="Go to User Profile"
+        onPress={() => navigation.navigate("UserProfileScreen")}
+        color="green"
+      />
     </View>
   );
 }

@@ -16,6 +16,7 @@ import HomeScreen from "./screen/Home/HomeScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { PlayerContextProvider } from "./context/player";
 import PlayerScreen from "./screen/PlayerScreen/PlayerScreen";
+import UserProfileScreen from "./screen/UserProfile/UserProfileScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -49,6 +50,9 @@ export default function App() {
           </Tab.Screen>
           <Tab.Screen name="PlayerScreen">
             {(props) => <PlayerScreen {...props} />}
+          </Tab.Screen>
+          <Tab.Screen name="UserProfileScreen">
+            {(props) => <UserProfileScreen {...props} />}
           </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>
