@@ -18,45 +18,64 @@ import { PlayerContextProvider } from "./context/player";
 import PlayerScreen from "./screen/PlayerScreen/PlayerScreen";
 import UserProfileScreen from "./screen/UserProfile/UserProfileScreen";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const twentyFourHoursInMs = 1000 * 60 * 60 * 24;
+// Create a client
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnmount: false,
+      refetchOnReconnect: false,
+      retry: false,
+      staleTime: twentyFourHoursInMs,
+    },
+  },
+});
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <PlayerContextProvider>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-              if (route.name === "HomeScreen") {
-                iconName = focused ? "ios-home" : "ios-home-outline";
-              } else if (route.name === "TracksListScreen") {
-                iconName = focused ? "musical-notes-sharp" : "ios-list";
-              } else if (route.name === "PlayerScreen") {
-                iconName = focused
-                  ? "play-circle-sharp"
-                  : "play-circle-outline";
-              }
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-          })}
-        >
-          <Tab.Screen name="HomeScreen">
-            {(props) => <HomeScreen {...props} />}
-          </Tab.Screen>
+    <QueryClientProvider client={queryClient}>
+      <PlayerContextProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+                if (route.name === "HomeScreen") {
+                  iconName = focused ? "ios-home" : "ios-home-outline";
+                } else if (route.name === "TracksListScreen") {
+                  iconName = focused ? "musical-notes-sharp" : "ios-list";
+                } else if (route.name === "PlayerScreen") {
+                  iconName = focused
+                    ? "play-circle-sharp"
+                    : "play-circle-outline";
+                }
+                return <Ionicons name={iconName} size={size} color={color} />;
+              },
+            })}
+          >
+            <Tab.Screen name="HomeScreen">
+              {(props) => <HomeScreen {...props} />}
+            </Tab.Screen>
 
-          <Tab.Screen name="TracksListScreen">
-            {(props) => <TracksListScreen {...props} />}
-          </Tab.Screen>
-          <Tab.Screen name="PlayerScreen">
-            {(props) => <PlayerScreen {...props} />}
-          </Tab.Screen>
-          <Tab.Screen name="UserProfileScreen">
-            {(props) => <UserProfileScreen {...props} />}
-          </Tab.Screen>
-        </Tab.Navigator>
-      </NavigationContainer>
-    </PlayerContextProvider>
+            <Tab.Screen name="TracksListScreen">
+              {(props) => <TracksListScreen {...props} />}
+            </Tab.Screen>
+            <Tab.Screen name="PlayerScreen">
+              {(props) => <PlayerScreen {...props} />}
+            </Tab.Screen>
+            <Tab.Screen
+              name="UserProfileScreen"
+              component={UserProfileScreen}
+            />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </PlayerContextProvider>
+    </QueryClientProvider>
   );
 }
 
