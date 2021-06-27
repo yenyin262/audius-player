@@ -5,6 +5,7 @@ import { MaterialIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import { usePlayer } from "../../context/player";
 import PlayerIconControl from "../../components/PlayerIconControl/PlayerIconControl";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import BottomButtonIcons from "../../components/BottomButtonIcons/BottomButtonIcons";
 
 const { width } = Dimensions.get("window");
 const imageSize = width - 96;
@@ -148,38 +149,7 @@ export default function PlayerScreen({ navigation }) {
           />
         </View>
 
-        <View
-          style={{
-            flexDirection: "row",
-          }}
-        >
-          <View
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <ButtonIcon
-              onIconPress={() => {}}
-              value={0}
-              onValuePress={() => {}}
-              icon={(props) => <Ionicons name="repeat-sharp" {...props} />}
-            />
-            <ButtonIcon
-              onIconPress={() => {}}
-              value={100}
-              onValuePress={() => {}}
-              icon={(props) => <Ionicons name="heart" {...props} />}
-            />
-            <ButtonIcon
-              icon={(props) => <Entypo name="forward" {...props} />}
-            />
-          </View>
-          <View>
-            <Ionicons name="ellipsis-vertical" size={30} color="white" />
-          </View>
-        </View>
+        <BottomButtonIcons color="white" fontSize={20} />
       </View>
     </View>
   );

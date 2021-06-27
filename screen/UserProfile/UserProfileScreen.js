@@ -1,6 +1,6 @@
 //import liraries
 import React, { useState } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 
 import { usePlayer } from "../../context/player";
 import TracksList from "../../components/TracksList/TracksList";
@@ -52,21 +52,23 @@ const UserProfileScreen = ({ route, navigation }) => {
   console.log(user);
 
   return (
-    <ScrollView style={styles.container}>
-      <Banner
-        profilePicture={user.profile_picture["480x480"]}
-        coverPhoto={user.cover_photo["640x"]}
-      />
-      <Profile
-        name={user.name}
-        handle={user.handle}
-        trackCount={user.track_count}
-        followerCount={user.follower_count}
-        followeeCount={user.followee_count}
-        userBio={user.bio}
-      />
-      <Tabs tracks={tracks} onPress={navigateToPlayer} />
-    </ScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={{ backgroundColor: "black" }}>
+        <Banner
+          profilePicture={user.profile_picture["480x480"]}
+          coverPhoto={user.cover_photo["640x"]}
+        />
+        <Profile
+          name={user.name}
+          handle={user.handle}
+          trackCount={user.track_count}
+          followerCount={user.follower_count}
+          followeeCount={user.followee_count}
+          userBio={user.bio}
+        />
+        <Tabs tracks={tracks} navigateToPlayer={navigateToPlayer} />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
@@ -74,8 +76,7 @@ const UserProfileScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
-    backgroundColor: "black",
+    backgroundColor: "#fff",
   },
   banner: {
     marginBottom: 50,
@@ -84,8 +85,6 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
   },
-
-  content: {},
 });
 
 //make this component available to the app

@@ -44,33 +44,34 @@ const PlayerContextProvider = ({ children }) => {
   }, [sound]);
 
   async function play(track) {
-    if (isPlaying) pause();
+    setCurrentTrack(track);
+    // if (isPlaying) pause();
 
-    const nextTrack = track || currentTrack;
+    // const nextTrack = track || currentTrack;
 
-    if (lastTrackId.current === null || lastTrackId.current !== nextTrack.id) {
-      setCurrentTrack(nextTrack);
-      setIsPlaying(true);
-      const { sound } = await Audio.Sound.createAsync(
-        await getStreamTrackSource(track.id),
-        {
-          shouldPlay: true,
-        }
-      );
-      setSound(sound);
-    } else {
-      sound.playAsync();
-    }
+    // if (lastTrackId.current === null || lastTrackId.current !== nextTrack.id) {
+    //   setCurrentTrack(nextTrack);
+    //   setIsPlaying(true);
+    //   const { sound } = await Audio.Sound.createAsync(
+    //     await getStreamTrackSource(track.id),
+    //     {
+    //       shouldPlay: true,
+    //     }
+    //   );
+    //   setSound(sound);
+    // } else {
+    //   sound.playAsync();
+    // }
   }
 
   function pause() {
     setIsPlaying(false);
-    sound.pauseAsync();
+    // sound.pauseAsync();
   }
 
   function _play() {
     setIsPlaying(true);
-    sound.playAsync();
+    // sound.playAsync();
   }
 
   function toggle() {

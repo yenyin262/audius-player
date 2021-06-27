@@ -13,33 +13,33 @@ import {
   Image,
 } from "react-native";
 import ItemDetails from "../ItemDetails/ItemDetails";
-import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { usePlayer } from "../../context/player";
+import BottomButtonIcons from "../BottomButtonIcons/BottomButtonIcons";
 
 const Item = ({ id, title, onPress, artwork, name, playCount, duration }) => {
   const navigation = useNavigation();
-  const [heartCount, setHeartCount] = useState(0);
-  const [repeatCount, setRepeatCount] = useState(0);
+  // const [heartCount, setHeartCount] = useState(0);
+  // const [repeatCount, setRepeatCount] = useState(0);
 
-  const onRepeatPress = () => {
-    setRepeatCount(repeatCount + 1);
-  };
+  // const onRepeatPress = () => {
+  //   setRepeatCount(repeatCount + 1);
+  // };
 
-  const onHeartPress = () => {
-    setHeartCount(heartCount + 1);
-  };
+  // const onHeartPress = () => {
+  //   setHeartCount(heartCount + 1);
+  // };
 
-  const onValuePress = () => {
-    console.log("new component to show how many likes");
-  };
+  // const onValuePress = () => {
+  //   console.log("new component to show how many likes");
+  // };
   function onTrackClick() {
     onPress(id);
   }
   const { track, play, pause } = usePlayer();
 
   return (
-    <>
+    <View style={{ marginVertical: 15 }}>
       {/* <TouchableOpacity style={styles.item} onPress={onTrackClick}> */}
       <TouchableOpacity style={styles.item} onPress={onPress}>
         <Image source={{ uri: artwork }} style={{ width: 80, height: 80 }} />
@@ -55,48 +55,8 @@ const Item = ({ id, title, onPress, artwork, name, playCount, duration }) => {
           </View>
         </View>
       </TouchableOpacity>
-
-      <View
-        style={{
-          flex: 1,
-          flexDirection: "row",
-          marginHorizontal: 10,
-          marginVertical: 10,
-        }}
-      >
-        <View
-          style={{
-            flex: 6,
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          <ButtonIcon
-            onIconPress={onRepeatPress}
-            value={repeatCount}
-            onValuePress={onValuePress}
-            icon={(props) => <Ionicons name="repeat-sharp" {...props} />}
-          />
-          <ButtonIcon
-            onIconPress={onHeartPress}
-            value={heartCount}
-            onValuePress={onValuePress}
-            icon={(props) => <Ionicons name="heart" {...props} />}
-          />
-          <ButtonIcon icon={(props) => <Entypo name="forward" {...props} />} />
-        </View>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "row",
-          }}
-        >
-          <ButtonIcon
-            icon={(props) => <Ionicons name="ellipsis-vertical" {...props} />}
-          />
-        </View>
-      </View>
-    </>
+      <BottomButtonIcons color="white" fontSize={20} />
+    </View>
   );
 };
 export default Item;

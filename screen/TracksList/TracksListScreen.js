@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import HeaderBar from "../../components/HeaderBar/HeaderBar";
 import TracksList from "../../components/TracksList/TracksList";
 import { usePlayer } from "../../context/player";
 import { trendingTracksMock } from "../../services/audiusMock";
@@ -23,18 +24,15 @@ export default function TracksListScreen({ navigation }) {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Tracks List Screen</Text>
-      {track && <Text>Now playing {track.title}</Text>}
-      <Button
-        title="Return Home"
-        onPress={() => navigation.navigate("HomeScreen")}
-      />
-      <Button title="Play Track" onPress={() => play()} />
-      <Button title="Pause Track" onPress={pause} />
+    <SafeAreaView
+      style={{
+        flex: 1,
+      }}
+    >
+      <HeaderBar />
       {trackList.length > 0 && (
         <TracksList tracks={trackList} onPress={navigateToPlayer} />
       )}
-    </View>
+    </SafeAreaView>
   );
 }
