@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from "react-native";
 const ComingSoonTab = ({}) => {
   return (
     <View style={styles.container}>
-      <Text style={{ color: "white", fontSize: 18 }}>Coming Soon! </Text>
+      <Text style={styles.text}>Coming Soon! </Text>
     </View>
   );
 };
@@ -17,6 +17,11 @@ const styles = StyleSheet.create({
     padding: 50,
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  text: {
+    color: "white",
+    fontSize: 18,
   },
 });
 

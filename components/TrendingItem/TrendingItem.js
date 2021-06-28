@@ -1,7 +1,5 @@
 import React from "react";
-
 import { View, StyleSheet, Text, Image } from "react-native";
-
 import BottomButtonIcons from "../BottomButtonIcons/BottomButtonIcons";
 import TrackStatIcons from "../TrackStatIcons/TrackStatIcons";
 
@@ -20,24 +18,19 @@ const TrendingItem = ({ artwork, playlist, name, tracks, rank }) => {
         elevation: 5,
       }}
     >
-      <View style={{}}>
+      <View>
         <View style={styles.contentContainer}>
-          <Image
-            source={{ uri: artwork }}
-            style={{ width: 140, height: 140 }}
-          />
-          <View
-            style={{
-              marginVertical: 20,
-              marginHorizontal: 20,
-              maxWidth: 200,
-            }}
-          >
-            <Text ellipsizeMode="tail" numberOfLines={1} style={styles.name}>
+          <Image source={{ uri: artwork }} style={styles.image} />
+          <View style={styles.itemInfoContainer}>
+            <Text
+              ellipsizeMode="tail"
+              numberOfLines={1}
+              style={styles.playlistText}
+            >
               {playlist.playlist_name}{" "}
             </Text>
             <Text
-              style={[styles.name, styles.name1]}
+              style={[styles.playlistText, styles.playlistSubText]}
               ellipsizeMode="tail"
               numberOfLines={1}
             >
@@ -45,46 +38,29 @@ const TrendingItem = ({ artwork, playlist, name, tracks, rank }) => {
             </Text>
           </View>
         </View>
-        <View style={{ marginVertical: 20 }}>
+        <View style={styles.iconContainer}>
           <TrackStatIcons playlist={playlist} rank={rank} font={20} />
         </View>
 
         <View>
           {tracks.map(({ title, user }, index) => (
-            <View
-              key={title}
-              style={{
-                flexDirection: "row",
-                paddingVertical: 10,
-                flexWrap: "wrap",
-                borderBottomColor: "light grey",
-                borderBottomWidth: "0.4",
-                borderStyle: "solid",
-              }}
-            >
-              <Text style={{ marginRight: 10, fontSize: 20 }}>{index + 1}</Text>
+            <View key={title} style={styles.tracksInfoContainer}>
+              <Text style={styles.numericStyle}>{index + 1}</Text>
               <Text
-                style={{ fontSize: 20, color: "black", maxWidth: 200 }}
+                style={styles.songTitle}
                 ellipsizeMode="tail"
                 numberOfLines={1}
               >
                 {title}
               </Text>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: "grey",
-                  paddingLeft: 5,
-                }}
-                ellipsizeMode="tail"
-              >
+              <Text style={styles.artist} ellipsizeMode="tail">
                 by {user.name}
               </Text>
             </View>
           ))}
         </View>
       </View>
-      <View style={{ marginTop: 10 }}>
+      <View style={styles.bottomIcons}>
         <BottomButtonIcons color="black" fontSize={20} />
       </View>
     </View>
@@ -97,15 +73,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 
-  title: {
-    fontSize: 24,
-    color: "white",
-    textAlign: "left",
-    textTransform: "capitalize",
-    marginBottom: 5,
+  image: {
+    width: 140,
+    height: 140,
   },
 
-  name: {
+  itemInfoContainer: {
+    marginVertical: 20,
+    marginHorizontal: 20,
+    maxWidth: 200,
+  },
+  playlistText: {
     fontSize: 25,
     fontWeight: "600",
     color: "black",
@@ -114,7 +92,40 @@ const styles = StyleSheet.create({
     maxWidth: 200,
   },
 
-  name1: {
+  playlistSubText: {
     fontWeight: "400",
+  },
+
+  iconContainer: {
+    marginVertical: 20,
+  },
+
+  tracksInfoContainer: {
+    flexDirection: "row",
+    paddingVertical: 10,
+    flexWrap: "wrap",
+    borderBottomColor: "grey",
+    borderBottomWidth: 0.4,
+    borderStyle: "solid",
+  },
+
+  numericStyle: {
+    marginRight: 10,
+    fontSize: 20,
+  },
+
+  songTitle: {
+    fontSize: 20,
+    color: "black",
+    maxWidth: 200,
+  },
+
+  artist: {
+    fontSize: 20,
+    color: "grey",
+    paddingLeft: 5,
+  },
+  bottomIcons: {
+    marginTop: 10,
   },
 });

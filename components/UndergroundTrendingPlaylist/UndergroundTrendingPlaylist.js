@@ -1,6 +1,5 @@
 import React from "react";
-import { View, FlatList, StyleSheet, StatusBar, Text } from "react-native";
-import TrendingItem from "../TrendingItem/TrendingItem";
+import { View, FlatList } from "react-native";
 import UndergroundTrendingPlaylistList from "../UndergroundTrendingPlaylistList/UndergroundTrendingPlaylistList";
 
 const UndergroundTrendingPlaylist = ({ tracks, onPress }) => {
@@ -8,10 +7,7 @@ const UndergroundTrendingPlaylist = ({ tracks, onPress }) => {
     return (
       <UndergroundTrendingPlaylistList
         rank={index + 1}
-        // onPress={() => onPress(item)}
-        // tracks={item.tracks}
         artwork={item.artwork["480x480"]}
-        // name={item.user.name}
         playlist={item}
         duration={item.duration}
       />
@@ -19,7 +15,7 @@ const UndergroundTrendingPlaylist = ({ tracks, onPress }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <FlatList
         data={tracks}
         renderItem={renderItem}
@@ -28,40 +24,5 @@ const UndergroundTrendingPlaylist = ({ tracks, onPress }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-  },
-
-  // contentContainer: {
-  //   flex: 1,
-  //   width: "100%",
-  //   paddingHorizontal: 10,
-  //   alignItems: "flex-start",
-  //   justifyContent: "flex-start",
-  // },
-  item: {
-    marginVertical: 5,
-    paddingHorizontal: 10,
-    flex: 1,
-    flexDirection: "row",
-    width: "100%",
-  },
-  title: {
-    fontSize: 20,
-    color: "white",
-    textAlign: "left",
-    textTransform: "capitalize",
-    marginBottom: 5,
-  },
-
-  name: {
-    fontSize: 18,
-    fontWeight: "400",
-    color: "#999A9E",
-    textTransform: "capitalize",
-  },
-});
 
 export default UndergroundTrendingPlaylist;

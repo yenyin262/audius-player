@@ -6,31 +6,18 @@ import AlbumStatIcons from "../AlbumStatIcons/AlbumStatIcons";
 // create a component
 const PlaylistItem = ({ tracks }) => {
   return (
-    <TouchableOpacity
-      style={{
-        margin: 10,
-        // flex: 1,
-        backgroundColor: "white",
-        borderRadius: 10,
-        maxWidth: "48%",
-      }}
-    >
+    <TouchableOpacity style={styles.button}>
       <Image
         source={{
           uri: getAlbumImageURL(tracks.playlist_image_sizes_multihash),
         }}
-        style={{ width: 170, height: 160, margin: 10, borderRadius: 10 }}
+        style={styles.itemImage}
       />
-      <View
-        style={{
-          marginVertical: 10,
-          marginHorizontal: 10,
-        }}
-      >
-        <Text style={styles.name} ellipsizeMode="tail" numberOfLines={1} s>
+      <View style={styles.itemInfoContainer}>
+        <Text style={styles.text} ellipsizeMode="tail" numberOfLines={1}>
           {tracks.playlist_name}
         </Text>
-        <Text style={[styles.name, styles.name1]} ellipsizeMode="tail">
+        <Text style={[styles.text, styles.subText]} ellipsizeMode="tail">
           {tracks.user.handle}
         </Text>
       </View>
@@ -42,14 +29,23 @@ const PlaylistItem = ({ tracks }) => {
 
 // define your styles
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    color: "white",
-    textTransform: "capitalize",
-    marginBottom: 5,
+  button: {
+    margin: 10,
+    backgroundColor: "white",
+    borderRadius: 10,
+    maxWidth: "48%",
   },
-
-  name: {
+  itemImage: {
+    width: 170,
+    height: 160,
+    margin: 10,
+    borderRadius: 10,
+  },
+  itemInfoContainer: {
+    marginVertical: 10,
+    marginHorizontal: 10,
+  },
+  text: {
     fontSize: 20,
     fontWeight: "600",
     color: "black",
@@ -57,7 +53,7 @@ const styles = StyleSheet.create({
     maxWidth: 200,
   },
 
-  name1: {
+  subText: {
     fontWeight: "400",
     marginTop: 10,
   },

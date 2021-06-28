@@ -5,7 +5,7 @@ import { getAlbumImageURL } from "../../utils/utils";
 
 import AlbumStatIcons from "../AlbumStatIcons/AlbumStatIcons";
 
-const TopAlbumsList = ({ albums }) => {
+const TopAlbumsItem = ({ albums }) => {
   return (
     <TouchableOpacity
       style={{
@@ -37,15 +37,8 @@ const TopAlbumsList = ({ albums }) => {
     </TouchableOpacity>
   );
 };
-export default TopAlbumsList;
+export default TopAlbumsItem;
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    color: "white",
-    textTransform: "capitalize",
-    marginBottom: 5,
-  },
-
   name: {
     fontSize: 20,
     fontWeight: "600",

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -22,19 +22,8 @@ export default function BottomButtonIcons({ color }) {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "row",
-      }}
-    >
-      <View
-        style={{
-          flex: 6,
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
+    <View style={styles.iconContainer}>
+      <View style={styles.buttonWrapper}>
         <ButtonIcon
           fontSize={20}
           color={color}
@@ -61,17 +50,8 @@ export default function BottomButtonIcons({ color }) {
           icon={(props) => <Entypo name="forward" {...props} />}
         />
       </View>
-      <View
-        style={{
-          flex: 2,
-        }}
-      ></View>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: "row",
-        }}
-      >
+      <View style={styles.flexItem}></View>
+      <View style={styles.ellipsisWrapper}>
         <ButtonIcon
           color={color}
           size={35}
@@ -81,3 +61,25 @@ export default function BottomButtonIcons({ color }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    flex: 1,
+    flexDirection: "row",
+  },
+
+  buttonWrapper: {
+    flex: 6,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  flexItem: {
+    flex: 2,
+  },
+
+  ellipsisWrapper: {
+    flex: 1,
+    flexDirection: "row",
+  },
+});

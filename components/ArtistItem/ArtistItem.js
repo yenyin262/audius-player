@@ -6,31 +6,18 @@ import AlbumStatIcons from "../AlbumStatIcons/AlbumStatIcons";
 // create a component
 const ArtistItem = ({ tracks }) => {
   return (
-    <View
-      style={{
-        margin: 10,
-        // flex: 1,
-        backgroundColor: "white",
-        borderRadius: 10,
-        maxWidth: "45%",
-      }}
-    >
+    <View style={styles.container}>
       <Image
         source={{
           uri: getArtistImage(tracks.profile_picture_sizes),
         }}
-        style={{ width: 160, height: 160, margin: 10, borderRadius: 80 }}
+        style={styles.artistImg}
       />
-      <View
-        style={{
-          marginVertical: 10,
-          marginHorizontal: 10,
-        }}
-      >
-        <Text style={styles.name} ellipsizeMode="tail" numberOfLines={1} s>
+      <View style={styles.artistInfoContainer}>
+        <Text style={styles.text} ellipsizeMode="tail" numberOfLines={1}>
           {tracks.bio}
         </Text>
-        <Text style={[styles.name, styles.name1]} ellipsizeMode="tail">
+        <Text style={[styles.text, styles.subText]} ellipsizeMode="tail">
           {kFormatter(tracks.follower_count)} followers{" "}
           <MaterialIcons name="verified" size={24} color="#8338EC" />
         </Text>
@@ -41,14 +28,25 @@ const ArtistItem = ({ tracks }) => {
 
 // define your styles
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    color: "white",
-    textTransform: "capitalize",
-    marginBottom: 5,
+  container: {
+    margin: 10,
+    backgroundColor: "white",
+    borderRadius: 10,
+    maxWidth: "45%",
+  },
+  artistImg: {
+    width: 160,
+    height: 160,
+    margin: 10,
+    borderRadius: 80,
   },
 
-  name: {
+  artistInfoContainer: {
+    marginVertical: 10,
+    marginHorizontal: 10,
+  },
+
+  text: {
     fontSize: 16,
     fontWeight: "600",
     color: "grey",
@@ -57,7 +55,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  name1: {
+  subText: {
     fontWeight: "400",
     marginTop: 10,
   },

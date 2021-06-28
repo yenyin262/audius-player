@@ -1,8 +1,7 @@
 //import liraries
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import { fullPlaylist } from "../../data/fullplaylist.json";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/core";
 
 const FORYOU_CARD = [
@@ -28,40 +27,20 @@ let colors = ["#FB5607", "#FF006E"];
 const ForYouCard = () => {
   const navigation = useNavigation();
 
-  console.log(fullPlaylist, "full of playlist ");
   return (
     <View style={styles.container}>
-      {FORYOU_CARD.map(({ title, subtitle, color, screen }, index) => {
+      {FORYOU_CARD.map(({ title, subtitle, screen }, index) => {
         return (
           <View
             key={index}
-            style={{
-              width: 380,
-              height: 240,
-              backgroundColor: colors[index % colors.length],
-              // backgroundColor: `linear-gradient(
-              //       135deg
-              //       , rgb(255, 166, 59) 0%, rgb(255, 37, 37) 100%)`,
-              borderStyle: "solid",
-              borderWidth: 2,
-              padding: 10,
-              marginBottom: 10,
-              borderRadius: 20,
-            }}
+            style={[
+              styles.cardBlock,
+              { backgroundColor: colors[index % colors.length] },
+            ]}
           >
             <TouchableOpacity onPress={() => navigation.navigate(screen)}>
-              <Text
-                style={{
-                  color: "black",
-                  fontSize: 24,
-                  textTransform: "uppercase",
-                  fontWeight: "900",
-                  marginVertical: 10,
-                }}
-              >
-                {title}
-              </Text>
-              <Text style={{ color: "black", fontSize: 22 }}>{subtitle}</Text>
+              <Text style={styles.titleText}>{title}</Text>
+              <Text style={styles.descriptionText}>{subtitle}</Text>
             </TouchableOpacity>
           </View>
         );
@@ -73,13 +52,31 @@ const ForYouCard = () => {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
-
     color: "white",
     marginBottom: 10,
     marginTop: 20,
+  },
+
+  cardBlock: {
+    width: 380,
+    height: 240,
+    borderStyle: "solid",
+    borderWidth: 2,
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 20,
+  },
+  titleText: {
+    color: "black",
+    fontSize: 24,
+    textTransform: "uppercase",
+    fontWeight: "900",
+    marginVertical: 10,
+  },
+
+  descriptionText: {
+    color: "black",
+    fontSize: 22,
   },
 });
 

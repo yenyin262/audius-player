@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component, useState, useEffect } from "react";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
-import TopAlbums from "../../components/TopAlbums/TopAlbums";
+import TopAlbumsView from "../../components/TopAlbumsView/TopAlbumsView";
 import { topAlbumsMock } from "../../services/audiusMock";
 
 // create a component
@@ -19,7 +19,9 @@ const TopAlbumsScreen = () => {
   }, []);
   return (
     <SafeAreaView style={styles.container}>
-      <View>{topAlbums.length > 0 && <TopAlbums albums={topAlbums} />}</View>
+      <View>
+        {topAlbums.length > 0 && <TopAlbumsView albums={topAlbums} />}
+      </View>
     </SafeAreaView>
   );
 };

@@ -1,7 +1,6 @@
 //import liraries
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Touchable } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import { View, Text, StyleSheet } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import MusicTab from "../MusicTab/MusicTab";

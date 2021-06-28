@@ -19,6 +19,7 @@ const PLAYLIST_CARD = [
 ];
 
 let colors = ["#FB5607", "#FF006E"];
+
 const PlaylistCard = () => {
   const navigation = useNavigation();
   return (
@@ -28,45 +29,15 @@ const PlaylistCard = () => {
           return (
             <View
               key={index}
-              style={{
-                width: "49%",
-                height: 240,
-                backgroundColor: colors[index % colors.length],
-                borderStyle: "solid",
-                borderWidth: 2,
-                padding: 10,
-                marginBottom: 10,
-                borderRadius: 20,
-              }}
+              style={[
+                styles.cardBlock,
+                { backgroundColor: colors[index % colors.length] },
+              ]}
             >
               <TouchableOpacity onPress={() => navigation.navigate(screen)}>
                 <Image />
-                <Text
-                  style={{
-                    color: "black",
-                    fontSize: 24,
-                    textTransform: "uppercase",
-                    fontWeight: "900",
-                    marginVertical: 10,
-                  }}
-                >
-                  {title}
-                </Text>
-                {/* <Text
-                  style={{
-                    color: "black",
-                  }}
-                >
-                  {}favorites
-                </Text> */}
-                {/* <Text
-                  style={{
-                    color: "black",
-                  }}
-                >
-                  {}tracks
-                </Text> */}
-                <Text style={{ color: "black", fontSize: 22 }}>{subtitle}</Text>
+                <Text style={styles.text}>{title}</Text>
+                <Text style={styles.description}>{subtitle}</Text>
               </TouchableOpacity>
             </View>
           );
@@ -82,6 +53,27 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+
+  cardBlock: {
+    width: "49%",
+    height: 240,
+    borderStyle: "solid",
+    borderWidth: 2,
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 20,
+  },
+  text: {
+    color: "black",
+    fontSize: 24,
+    textTransform: "uppercase",
+    fontWeight: "900",
+    marginVertical: 10,
+  },
+  description: {
+    color: "black",
+    fontSize: 22,
   },
 });
 

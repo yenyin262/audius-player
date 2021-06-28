@@ -1,6 +1,6 @@
 //import liraries
-import React, { useState, useCallback, useRef } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import ShowMoreButton from "../ShowMoreButton/ShowMoreButton";
 

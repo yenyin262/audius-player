@@ -4,8 +4,6 @@ import { View, StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import ArtistItem from "../ArtistItem/ArtistItem";
 
-import PlaylistItem from "../PlaylistItem/PlaylistItem";
-
 // create a component
 const ArtistView = ({ tracks }) => {
   const renderItem = ({ item }) => {
@@ -27,10 +25,6 @@ const ArtistView = ({ tracks }) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    // flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
-    // backgroundColor: "#2c3e50",
   },
 });
 

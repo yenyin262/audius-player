@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function PlaylistButtonIcon(props) {
@@ -31,3 +31,5 @@ export default function PlaylistButtonIcon(props) {
     </View>
   );
 }
+
+const styles = create.StyleSheet({});

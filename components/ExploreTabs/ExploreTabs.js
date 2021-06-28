@@ -2,18 +2,14 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Touchable } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import ExploreTabInfo from "../ExploreTabInfo/ExploreTabInfo";
 import ForYouCard from "../ForYouCard/ForYouCard";
-import ForYouTileCard from "../ForYouTileCard/ForYouTileCard";
 import MoodCard from "../MoodCard/MoodCard";
 import PlaylistCard from "../PlaylistCard /PlaylistCard";
-import ArtistCard from "../ArtistCard /ArtistCard";
 import ChillCard from "../ChillCard/ChillCard";
-import MusicByMoodList from "../PlaylistItem/PlaylistItem";
-import MusicByMood from "../PlaylistView/PlaylistView";
 import FeaturedPlaylists from "../FeaturedPlaylists/FeaturedPlaylists";
-import FeaturedArtists from "../FeaturedArtistst/FeaturedArtists";
+import FeaturedArtists from "../FeaturedArtists/FeaturedArtists";
 
 const TABS_STATE = [
   {

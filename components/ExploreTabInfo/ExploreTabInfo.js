@@ -6,27 +6,8 @@ import { View, Text, StyleSheet } from "react-native";
 const ExploreTabInfo = ({ heading, info }) => {
   return (
     <View>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 24,
-          fontWeight: "700",
-        }}
-      >
-        {heading}
-      </Text>
-      {!!info && (
-        <Text
-          style={{
-            color: "black",
-            fontSize: 20,
-            fontWeight: "500",
-            marginVertical: 5,
-          }}
-        >
-          {info}
-        </Text>
-      )}
+      <Text style={styles.headingText}>{heading}</Text>
+      {!!info && <Text style={styles.infoText}>{info}</Text>}
     </View>
   );
 };
@@ -34,4 +15,17 @@ const ExploreTabInfo = ({ heading, info }) => {
 //make this component available to the app
 export default ExploreTabInfo;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  headingText: {
+    color: "black",
+    fontSize: 24,
+    fontWeight: "700",
+  },
+
+  infoText: {
+    color: "black",
+    fontSize: 20,
+    fontWeight: "500",
+    marginVertical: 5,
+  },
+});

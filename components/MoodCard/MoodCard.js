@@ -1,14 +1,11 @@
 //import liraries
-import React, { Component } from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import { MaterialIcons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/core";
 
 import Emoji from "react-native-emoji";
-import { color } from "react-native-reanimated";
+
 const MOOD_CARD = [
   {
     title: "Upbeat",
@@ -41,35 +38,14 @@ const MoodCard = () => {
         return (
           <View
             key={index}
-            style={{
-              width: "49%",
-              height: 240,
-              backgroundColor: colors[index % colors.length],
-              borderStyle: "solid",
-              borderWidth: 2,
-              padding: 10,
-              marginBottom: 10,
-              borderRadius: 20,
-            }}
+            style={[
+              styles.cardBlock,
+              { backgroundColor: colors[index % colors.length] },
+            ]}
           >
             <TouchableOpacity onPress={() => navigation.navigate(screen)}>
-              <Text
-                style={{
-                  color: "black",
-                  fontSize: 24,
-                  textTransform: "uppercase",
-                  fontWeight: "900",
-                  marginVertical: 10,
-                }}
-              >
-                {title}
-              </Text>
-
-              {/* <MaterialCommunityIcons name={icon} size={40} color="grey" /> */}
-              <Emoji
-                name={icon}
-                style={{ fontSize: 50, textAlign: "center", paddingTop: 30 }}
-              />
+              <Text style={styles.titleText}>{title}</Text>
+              <Emoji name={icon} style={styles.emoji} />
             </TouchableOpacity>
           </View>
         );
@@ -85,6 +61,30 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignSelf: "center",
+  },
+
+  cardBlock: {
+    width: "49%",
+    height: 240,
+    borderStyle: "solid",
+    borderWidth: 2,
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 20,
+  },
+
+  titleText: {
+    color: "black",
+    fontSize: 24,
+    textTransform: "uppercase",
+    fontWeight: "900",
+    marginVertical: 10,
+  },
+
+  emoji: {
+    fontSize: 50,
+    textAlign: "center",
+    paddingTop: 30,
   },
 });
 

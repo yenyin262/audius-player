@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function ButtonIcon(props) {
@@ -13,24 +13,14 @@ export default function ButtonIcon(props) {
     fontSize,
   } = props;
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "row",
-        alignItems: "center",
-      }}
-    >
-      <Icon
-        size={size}
-        // color="white"
-        color={color}
-        onPress={onIconPress}
-      />
+    <View style={styles.iconContainer}>
+      <Icon size={size} color={color} onPress={onIconPress} />
       <TouchableOpacity onPress={onValuePress}>
         <Text
           style={{
             color: color,
             fontSize: fontSize,
+            marginHorizontal: 5,
           }}
         >
           {value}
@@ -39,3 +29,11 @@ export default function ButtonIcon(props) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+});

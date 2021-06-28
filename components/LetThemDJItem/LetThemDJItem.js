@@ -1,16 +1,13 @@
 import React from "react";
-
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { getAlbumImageURL } from "../../utils/utils";
-
 import AlbumStatIcons from "../AlbumStatIcons/AlbumStatIcons";
 // create a component
-const LetThemDJList = ({ tracks }) => {
+const LetThemDJItem = ({ tracks }) => {
   return (
     <TouchableOpacity
       style={{
         margin: 10,
-        // flex: 1,
         backgroundColor: "white",
         borderRadius: 10,
         maxWidth: "48%",
@@ -20,16 +17,11 @@ const LetThemDJList = ({ tracks }) => {
         source={{
           uri: getAlbumImageURL(tracks.playlist_image_sizes_multihash),
         }}
-        style={{ width: 170, height: 160, margin: 10, borderRadius: 10 }}
+        style={styles.itemImg}
       />
-      <View
-        style={{
-          marginVertical: 10,
-          marginHorizontal: 10,
-        }}
-      >
-        <Text style={styles.name}>{tracks.playlist_name}</Text>
-        <Text style={[styles.name, styles.name1]} ellipsizeMode="tail">
+      <View style={styles.itemInfoContainer}>
+        <Text style={styles.text}>{tracks.playlist_text}</Text>
+        <Text style={[styles.text, styles.subtext]} ellipsizeMode="tail">
           {tracks.user.handle}
         </Text>
       </View>
@@ -38,25 +30,28 @@ const LetThemDJList = ({ tracks }) => {
     </TouchableOpacity>
   );
 };
-export default LetThemDJList;
+export default LetThemDJItem;
 
 // define your styles
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    color: "white",
-    textTransform: "capitalize",
-    marginBottom: 5,
+  itemImg: {
+    width: 170,
+    height: 160,
+    margin: 10,
+    borderRadius: 10,
   },
-
-  name: {
+  itemInfoContainer: {
+    marginVertical: 10,
+    marginHorizontal: 10,
+  },
+  text: {
     fontSize: 20,
     fontWeight: "600",
     color: "black",
     textTransform: "capitalize",
   },
 
-  name1: {
+  subtext: {
     fontWeight: "400",
     marginTop: 10,
   },

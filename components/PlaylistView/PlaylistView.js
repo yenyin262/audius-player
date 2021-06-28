@@ -11,7 +11,7 @@ const PlaylistView = ({ tracks }) => {
     return <PlaylistItem tracks={item} />;
   };
   return (
-    <View style={styles.container}>
+    <View>
       <FlatList
         data={tracks}
         renderItem={renderItem}
@@ -21,16 +21,6 @@ const PlaylistView = ({ tracks }) => {
     </View>
   );
 };
-
-// define your styles
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
-    // backgroundColor: "#2c3e50",
-  },
-});
 
 //make this component available to the app
 export default PlaylistView;

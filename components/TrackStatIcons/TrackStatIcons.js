@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -9,18 +9,7 @@ import { kFormatter } from "../../utils/utils";
 
 export default function TrackStatIcons({ playlist, rank }) {
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        borderBottomColor: "light grey",
-        borderBottomWidth: "0.4",
-        borderStyle: "solid",
-        paddingVertical: 10,
-        // maxWidth: 300,
-      }}
-    >
+    <View style={styles.iconContainer}>
       <ButtonIcon
         fontSize={20}
         color="black"
@@ -49,3 +38,15 @@ export default function TrackStatIcons({ playlist, rank }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    borderBottomColor: "light grey",
+    borderBottomWidth: "0.4",
+    borderStyle: "solid",
+    paddingVertical: 10,
+  },
+});

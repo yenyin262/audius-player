@@ -1,24 +1,12 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
-
 import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { Foundation } from "@expo/vector-icons";
 import { kFormatter } from "../../utils/utils";
 
 export default function AlbumStatIcons({ tracks, color }) {
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        paddingVertical: 10,
-        paddingHorizontal: 10,
-        maxWidth: 300,
-      }}
-    >
+    <View style={styles.iconContainer}>
       <ButtonIcon
         fontSize={15}
         color="black"
@@ -47,3 +35,14 @@ export default function AlbumStatIcons({ tracks, color }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    maxWidth: 300,
+  },
+});

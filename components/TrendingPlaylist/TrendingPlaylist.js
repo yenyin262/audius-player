@@ -4,7 +4,6 @@ import TrendingItem from "../TrendingItem/TrendingItem";
 
 const TrendingPlaylist = ({ tracks, onPress }) => {
   const renderItem = ({ item, index }) => {
-    console.log(item.tracks["title"], "item item ");
     return (
       <TrendingItem
         rank={index + 1}
@@ -18,7 +17,7 @@ const TrendingPlaylist = ({ tracks, onPress }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <FlatList
         data={tracks}
         renderItem={renderItem}
@@ -27,40 +26,5 @@ const TrendingPlaylist = ({ tracks, onPress }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-  },
-
-  // contentContainer: {
-  //   flex: 1,
-  //   width: "100%",
-  //   paddingHorizontal: 10,
-  //   alignItems: "flex-start",
-  //   justifyContent: "flex-start",
-  // },
-  item: {
-    marginVertical: 5,
-    paddingHorizontal: 10,
-    flex: 1,
-    flexDirection: "row",
-    width: "100%",
-  },
-  title: {
-    fontSize: 20,
-    color: "white",
-    textAlign: "left",
-    textTransform: "capitalize",
-    marginBottom: 5,
-  },
-
-  name: {
-    fontSize: 18,
-    fontWeight: "400",
-    color: "#999A9E",
-    textTransform: "capitalize",
-  },
-});
 
 export default TrendingPlaylist;

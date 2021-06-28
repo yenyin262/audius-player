@@ -1,7 +1,7 @@
 //import liraries
 import React, { Component, useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import LetThemDJ from "../../components/LetThemDJ/LetThemDJ";
+import LetThemDJView from "../../components/LetThemDJView/LetThemDJView";
 import { LetThemDJMock } from "../../services/audiusMock";
 
 // create a component
@@ -18,7 +18,7 @@ const LetThemDJScreen = () => {
   }, []);
   return (
     <View style={styles.container}>
-      {playlistByDJ.length > 0 && <LetThemDJ tracks={playlistByDJ} />}
+      {playlistByDJ.length > 0 && <LetThemDJView tracks={playlistByDJ} />}
     </View>
   );
 };

@@ -1,17 +1,6 @@
-import React, { useState } from "react";
-import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import ButtonIcon from "../ButtonIcon/ButtonIcon";
-import {
-  SafeAreaView,
-  View,
-  FlatList,
-  StyleSheet,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import React from "react";
+
+import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import ItemDetails from "../ItemDetails/ItemDetails";
 import { useNavigation } from "@react-navigation/native";
 import { usePlayer } from "../../context/player";
@@ -19,20 +8,7 @@ import BottomButtonIcons from "../BottomButtonIcons/BottomButtonIcons";
 
 const Item = ({ id, title, onPress, artwork, name, playCount, duration }) => {
   const navigation = useNavigation();
-  // const [heartCount, setHeartCount] = useState(0);
-  // const [repeatCount, setRepeatCount] = useState(0);
 
-  // const onRepeatPress = () => {
-  //   setRepeatCount(repeatCount + 1);
-  // };
-
-  // const onHeartPress = () => {
-  //   setHeartCount(heartCount + 1);
-  // };
-
-  // const onValuePress = () => {
-  //   console.log("new component to show how many likes");
-  // };
   function onTrackClick() {
     onPress(id);
   }

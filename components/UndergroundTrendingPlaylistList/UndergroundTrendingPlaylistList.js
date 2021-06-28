@@ -1,19 +1,5 @@
-import React, { useState } from "react";
-
-import {
-  SafeAreaView,
-  View,
-  FlatList,
-  StyleSheet,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-import ButtonIcon from "../ButtonIcon/ButtonIcon";
-import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { Foundation } from "@expo/vector-icons";
+import React from "react";
+import { View, StyleSheet, Text, Image } from "react-native";
 import BottomButtonIcons from "../BottomButtonIcons/BottomButtonIcons";
 import TrackStatIcons from "../TrackStatIcons/TrackStatIcons";
 
@@ -38,24 +24,28 @@ const UndergroundTrendingPlaylistList = ({
       }}
     >
       <View style={styles.contentContainer}>
-        <Image source={{ uri: artwork }} style={{ width: 140, height: 140 }} />
+        <Image source={{ uri: artwork }} style={styles.image} />
 
         <View
           style={{
             marginHorizontal: 20,
           }}
         >
-          <View style={{ marginHorizontal: 150, width: "50%" }}>
-            <Text style={{ color: "grey", fontSize: 16 }}>
+          <View style={styles.durationContentContainer}>
+            <Text style={styles.durationText}>
               {new Date(duration * 1000).toISOString().substr(15, 4)}
             </Text>
           </View>
 
-          <Text style={styles.name} ellipsizeMode="tail" numberOfLines={1}>
-            {playlist.title}{" "}
+          <Text
+            style={styles.playlistTitle}
+            ellipsizeMode="tail"
+            numberOfLines={1}
+          >
+            {playlist.title}
           </Text>
           <Text
-            style={[styles.name, styles.name1]}
+            style={[styles.playlistTitle, styles.playlistSubText]}
             ellipsizeMode="tail"
             numberOfLines={1}
           >
@@ -66,7 +56,7 @@ const UndergroundTrendingPlaylistList = ({
 
       <TrackStatIcons playlist={playlist} rank={rank} />
 
-      <View style={{ marginTop: 20 }}>
+      <View style={styles.bottomIcons}>
         <BottomButtonIcons color="black" fontSize={20} />
       </View>
     </View>
@@ -74,19 +64,23 @@ const UndergroundTrendingPlaylistList = ({
 };
 export default UndergroundTrendingPlaylistList;
 const styles = StyleSheet.create({
+  image: {
+    width: 140,
+    height: 140,
+  },
   contentContainer: {
     flexDirection: "row",
   },
 
-  title: {
-    fontSize: 24,
-    color: "white",
-
-    textTransform: "capitalize",
-    marginBottom: 5,
+  durationContentContainer: {
+    marginHorizontal: 150,
+    width: "50%",
   },
-
-  name: {
+  durationText: {
+    color: "grey",
+    fontSize: 16,
+  },
+  playlistTitle: {
     fontSize: 25,
     fontWeight: "600",
     color: "black",
@@ -94,8 +88,11 @@ const styles = StyleSheet.create({
     maxWidth: 200,
   },
 
-  name1: {
+  playlistSubText: {
     fontWeight: "400",
     marginTop: 10,
+  },
+  bottomIcons: {
+    marginTop: 20,
   },
 });
