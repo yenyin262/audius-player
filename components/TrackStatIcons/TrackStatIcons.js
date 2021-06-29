@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 
 import { Ionicons } from "@expo/vector-icons";

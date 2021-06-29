@@ -1,6 +1,6 @@
 //import liraries
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import TracksList from "../TracksList/TracksList";
 
 // create a component

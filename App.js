@@ -35,11 +35,6 @@ const queryClient = new QueryClient({
   },
 });
 
-// const globalScreenOptions = {
-//   headerStyle: { backgroundcolor: "#3A86FF" },
-//   headerTintStyle: { color: "white" },
-//   headerStyle: { color: "white" },
-// };
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -59,12 +54,20 @@ export default function App() {
                     screenOptions={({ route }) => ({
                       tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
-                        if (route.name === "HomeScreen") {
+                        if (route.name === "Home") {
                           iconName = focused ? "ios-home" : "ios-home-outline";
-                        } else if (route.name === "TracksListScreen") {
+                        } else if (route.name === "Music") {
                           iconName = focused
                             ? "musical-notes-sharp"
                             : "ios-list";
+                        } else if (route.name === "Profile") {
+                          iconName = focused
+                            ? "ios-person"
+                            : "ios-person-outline";
+                        } else if (route.name === "Explore") {
+                          iconName = focused
+                            ? "trending-up"
+                            : "ios-trending-up-outline";
                         } else if (route.name === "PlayerScreen") {
                           iconName = focused
                             ? "play-circle-sharp"
@@ -76,21 +79,15 @@ export default function App() {
                       },
                     })}
                   >
-                    <Tab.Screen name="HomeScreen">
+                    <Tab.Screen name="Home">
                       {(props) => <HomeScreen {...props} />}
                     </Tab.Screen>
 
-                    <Tab.Screen name="TracksListScreen">
+                    <Tab.Screen name="Music">
                       {(props) => <TracksListScreen {...props} />}
                     </Tab.Screen>
-                    <Tab.Screen
-                      name="UserProfileScreen"
-                      component={UserProfileScreen}
-                    />
-                    <Tab.Screen
-                      name="ExploreScreen"
-                      component={ExploreScreen}
-                    />
+                    <Tab.Screen name="Profile" component={UserProfileScreen} />
+                    <Tab.Screen name="Explore" component={ExploreScreen} />
                   </Tab.Navigator>
                 </View>
               )}

@@ -1,6 +1,6 @@
 //import liraries
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 
 import PlaylistItem from "../PlaylistItem/PlaylistItem";

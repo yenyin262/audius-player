@@ -1,8 +1,8 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import { getArtistImage, kFormatter } from "../../utils/utils";
 import { MaterialIcons } from "@expo/vector-icons";
-import AlbumStatIcons from "../AlbumStatIcons/AlbumStatIcons";
+
 // create a component
 const ArtistItem = ({ tracks }) => {
   return (

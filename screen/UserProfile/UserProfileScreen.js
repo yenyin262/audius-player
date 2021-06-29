@@ -1,5 +1,5 @@
 //import liraries
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 
 import { usePlayer } from "../../context/player";
@@ -10,9 +10,6 @@ import { getUserProfile } from "../../services/audius";
 import Banner from "../../components/Banner/Banner";
 import Profile from "../../components/Profile/Profile";
 import Tabs from "../../components/Tabs/Tabs";
-import MusicTab from "../../components/MusicTab/MusicTab";
-
-// create a component
 
 const UserProfileScreen = ({ route, navigation }) => {
   const userId = route?.params?.userId || "n1OXD";

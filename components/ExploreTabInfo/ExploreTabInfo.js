@@ -17,7 +17,7 @@ export default ExploreTabInfo;
 
 const styles = StyleSheet.create({
   headingText: {
-    color: "black",
+    color: "#8338EC",
     fontSize: 24,
     fontWeight: "700",
   },

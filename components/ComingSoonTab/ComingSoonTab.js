@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 // create a component
-const ComingSoonTab = ({}) => {
+const ComingSoonTab = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Coming Soon! </Text>
