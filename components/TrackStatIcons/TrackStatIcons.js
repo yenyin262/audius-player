@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from "react-native";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 
 import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
 import { Foundation } from "@expo/vector-icons";
 import { kFormatter } from "../../utils/utils";
 
@@ -44,8 +43,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "flex-start",
-    borderBottomColor: "light grey",
-    borderBottomWidth: "0.4",
+    borderBottomColor: "grey",
+    borderBottomWidth: 0.4,
     borderStyle: "solid",
     paddingVertical: 10,
   },

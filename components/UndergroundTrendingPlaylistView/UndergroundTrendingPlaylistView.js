@@ -1,11 +1,11 @@
 import React from "react";
 import { View, FlatList } from "react-native";
-import UndergroundTrendingPlaylistList from "../UndergroundTrendingPlaylistList/UndergroundTrendingPlaylistList";
+import UndergroundTrendingPlaylistItem from "../UndergroundTrendingPlaylistItem/UndergroundTrendingPlaylistItem";
 
-const UndergroundTrendingPlaylist = ({ tracks, onPress }) => {
+const UndergroundTrendingPlaylistView = ({ tracks, onPress }) => {
   const renderItem = ({ item, index }) => {
     return (
-      <UndergroundTrendingPlaylistList
+      <UndergroundTrendingPlaylistItem
         rank={index + 1}
         artwork={item.artwork["480x480"]}
         playlist={item}
@@ -25,4 +25,4 @@ const UndergroundTrendingPlaylist = ({ tracks, onPress }) => {
   );
 };
 
-export default UndergroundTrendingPlaylist;
+export default UndergroundTrendingPlaylistView;

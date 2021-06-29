@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image } from "react-native";
 import BottomButtonIcons from "../BottomButtonIcons/BottomButtonIcons";
 import TrackStatIcons from "../TrackStatIcons/TrackStatIcons";
 
-const UndergroundTrendingPlaylistList = ({
+const UndergroundTrendingPlaylistItem = ({
   artwork,
   playlist,
   rank,
@@ -62,7 +62,7 @@ const UndergroundTrendingPlaylistList = ({
     </View>
   );
 };
-export default UndergroundTrendingPlaylistList;
+export default UndergroundTrendingPlaylistItem;
 const styles = StyleSheet.create({
   image: {
     width: 140,

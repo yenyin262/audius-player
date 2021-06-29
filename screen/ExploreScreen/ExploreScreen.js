@@ -4,10 +4,8 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import ExploreTabs from "../../components/ExploreTabs/ExploreTabs";
 import HeaderBar from "../../components/HeaderBar/HeaderBar";
-
 import { createStackNavigator } from "@react-navigation/stack";
 import TrendingPlaylistScreen from "../TrendingPlaylistScreen/TrendingPlaylistScreen";
-
 import UndergroundTrendingScreen from "../UndergroundTrendingScreen/UndergroundTrendingScreen";
 import TopAlbumsScreen from "../TopAlbumsScreen/TopAlbumsScreen";
 import LetThemDJScreen from "../LetThemDJScreen/LetThemDJScreen";
@@ -28,16 +26,7 @@ const ExploreScreen = () => {
             <View style={styles.container}>
               <HeaderBar />
 
-              <Text
-                style={{
-                  color: "#8338EC",
-                  fontSize: 60,
-                  fontWeight: "900",
-                  marginVertical: 10,
-                }}
-              >
-                Explore
-              </Text>
+              <Text style={styles.heading}>Explore</Text>
               <ExploreTabs navigation={props.navigation} />
             </View>
           </ScrollView>
@@ -70,6 +59,12 @@ const ExploreScreen = () => {
 
 // define your styles
 const styles = StyleSheet.create({
+  heading: {
+    color: "#8338EC",
+    fontSize: 60,
+    fontWeight: "900",
+    marginVertical: 10,
+  },
   container: {
     marginVertical: 50,
     marginHorizontal: 20,

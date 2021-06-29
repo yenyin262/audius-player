@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { View, Text, Image, Dimensions, StyleSheet } from "react-native";
-import ButtonIcon from "../../components/ButtonIcon/ButtonIcon";
-import { MaterialIcons, Ionicons, Entypo } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { usePlayer } from "../../context/player";
 import PlayerIconControl from "../../components/PlayerIconControl/PlayerIconControl";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -50,13 +49,7 @@ export default function PlayerScreen({ navigation }) {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "black",
-        padding: 24,
-      }}
-    >
+    <View style={styles.screenContainer}>
       <TouchableOpacity
         onPress={navigateToUserProfile}
         style={{
@@ -74,47 +67,19 @@ export default function PlayerScreen({ navigation }) {
           }}
         />
       </TouchableOpacity>
-      <View
-        style={{
-          flex: 1,
-        }}
-      >
-        <View style={{ flex: 1, marginBottom: 10 }}>
-          <Text
-            style={{
-              textAlign: "center",
-              color: "grey",
-              fontSize: 24,
-              marginBottom: 5,
-            }}
-          >
-            {track.title}
-          </Text>
-          <Text
-            style={{
-              color: "hotpink",
-              textAlign: "center",
-              fontSize: 18,
-            }}
-          >
-            {track.user.name}
-          </Text>
+      <View style={styles.flexView}>
+        <View style={styles.trackInfoContainer}>
+          <Text style={styles.trackTitle}>{track.title}</Text>
+          <Text style={styles.artist}>{track.user.name}</Text>
         </View>
         <View>
           <View style={{ flexDirection: "row" }}>
             <Text style={styles.text}>{position}</Text>
-            <View style={{ flex: 1 }} />
+            <View style={styles.flexView} />
             <Text style={[styles.text, { width: 40 }]}>{remaining}</Text>
           </View>
         </View>
-        <View
-          style={{
-            flex: 2,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
+        <View style={styles.iconControlContainer}>
           <PlayerIconControl
             icon={(props) => (
               <MaterialIcons name="replay" {...props} size={30} />
@@ -155,6 +120,11 @@ export default function PlayerScreen({ navigation }) {
   );
 }
 const styles = StyleSheet.create({
+  screenContainer: {
+    flex: 1,
+    backgroundColor: "black",
+    padding: 24,
+  },
   slider: {
     marginTop: -12,
   },
@@ -177,5 +147,35 @@ const styles = StyleSheet.create({
     color: "rgba(255, 255, 255, 0.72)",
     fontSize: 12,
     textAlign: "center",
+  },
+  flexView: {
+    flex: 1,
+  },
+  trackInfoContainer: {
+    flex: 1,
+    marginBottom: 10,
+  },
+
+  trackTitle: {
+    textAlign: "center",
+    color: "grey",
+    fontSize: 24,
+    marginBottom: 5,
+  },
+
+  artist: {
+    color: "hotpink",
+    textAlign: "center",
+    fontSize: 18,
+  },
+
+  flexView: {
+    flex: 1,
+  },
+  iconControlContainer: {
+    flex: 2,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });

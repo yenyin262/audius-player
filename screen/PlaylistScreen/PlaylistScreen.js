@@ -16,7 +16,7 @@ const PlaylistScreen = () => {
     }
     getPlaylistByMood();
   }, []);
-  console.log("mbm", playlistByMood.length);
+
   return (
     <View style={styles.container}>
       {playlistByMood.length > 0 && <PlaylistView tracks={playlistByMood} />}
@@ -28,9 +28,6 @@ const PlaylistScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
-    // backgroundColor: "#2c3e50",
   },
 });
 

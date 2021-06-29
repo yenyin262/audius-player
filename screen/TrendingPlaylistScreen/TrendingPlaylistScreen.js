@@ -1,6 +1,6 @@
 //import liraries
-import React, { Component, useEffect } from "react";
-import { View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import TrendingPlaylist from "../../components/TrendingPlaylist/TrendingPlaylist";
 import { trendingPlaylistMock } from "../../services/audiusMock";
 
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "flex-start",
     marginVertical: 20,
-
     marginHorizontal: 20,
   },
 });

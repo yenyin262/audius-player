@@ -35,7 +35,7 @@ const UserProfileScreen = ({ route, navigation }) => {
 
   if (isLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={styles.text}>
         <Text>Loading</Text>
       </View>
     );
@@ -43,7 +43,7 @@ const UserProfileScreen = ({ route, navigation }) => {
 
   if (!user) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={styles.text}>
         <Text>User not found</Text>
       </View>
     );
@@ -74,6 +74,11 @@ const UserProfileScreen = ({ route, navigation }) => {
 
 // define your styles
 const styles = StyleSheet.create({
+  text: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",

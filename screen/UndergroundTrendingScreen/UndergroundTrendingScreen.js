@@ -1,8 +1,7 @@
 //import liraries
-import React, { Component, useEffect } from "react";
-import { View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
-import TrendingPlaylist from "../../components/TrendingPlaylist/TrendingPlaylist";
-import UndergroundTrendingPlaylist from "../../components/UndergroundTrendingPlaylist/UndergroundTrendingPlaylist";
+import React, { useEffect } from "react";
+import { View, StyleSheet, SafeAreaView } from "react-native";
+import UndergroundTrendingPlaylistView from "../../components/UndergroundTrendingPlaylistView/UndergroundTrendingPlaylistView";
 import { undergroundTrendingMock } from "../../services/audiusMock";
 
 // create a component
@@ -29,7 +28,7 @@ const UndergroundTrendingScreen = ({}) => {
     <SafeAreaView style={styles.container}>
       <View>
         {undergroundPlayList.length > 0 && (
-          <UndergroundTrendingPlaylist tracks={undergroundPlayList} />
+          <UndergroundTrendingPlaylistView tracks={undergroundPlayList} />
         )}
       </View>
     </SafeAreaView>
@@ -40,7 +39,6 @@ const UndergroundTrendingScreen = ({}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: "flex-start",
     alignItems: "flex-start",
     marginVertical: 20,
 
