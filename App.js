@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 import { Audio } from "expo-av";
 import {
   getStreamTrackSource,
   // trendingTracks,
 } from "./services/audius";
-import TracksList from "./components/TracksList/TracksList";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -19,7 +18,6 @@ import UserProfileScreen from "./screen/UserProfile/UserProfileScreen";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import HeaderBar from "./components/HeaderBar/HeaderBar";
 import { createStackNavigator } from "@react-navigation/stack";
 import ExploreScreen from "./screen/ExploreScreen/ExploreScreen";
 
@@ -37,6 +35,11 @@ const queryClient = new QueryClient({
   },
 });
 
+// const globalScreenOptions = {
+//   headerStyle: { backgroundcolor: "#3A86FF" },
+//   headerTintStyle: { color: "white" },
+//   headerStyle: { color: "white" },
+// };
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -80,9 +83,6 @@ export default function App() {
                     <Tab.Screen name="TracksListScreen">
                       {(props) => <TracksListScreen {...props} />}
                     </Tab.Screen>
-                    {/* <Tab.Screen name="PlayerScreen">
-                      {(props) => <PlayerScreen {...props} />}
-                    </Tab.Screen> */}
                     <Tab.Screen
                       name="UserProfileScreen"
                       component={UserProfileScreen}

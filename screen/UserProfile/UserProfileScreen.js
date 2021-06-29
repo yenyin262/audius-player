@@ -49,8 +49,6 @@ const UserProfileScreen = ({ route, navigation }) => {
     );
   }
 
-  console.log(user);
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={{ backgroundColor: "black" }}>
