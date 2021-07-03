@@ -14,7 +14,6 @@ export default function TrackStatIcons({ playlist, rank }) {
         color="black"
         onIconPress={() => {}}
         value={rank}
-        // onValuePress={() => {}}
         size={25}
         icon={(props) => <Foundation name="crown" color="black" {...props} />}
       />
@@ -23,7 +22,6 @@ export default function TrackStatIcons({ playlist, rank }) {
         color="black"
         onIconPress={() => {}}
         size={25}
-        // onValuePress={() => {}}
         value={kFormatter(playlist.favorite_count)}
         icon={(props) => <Ionicons name="heart" {...props} />}
       />

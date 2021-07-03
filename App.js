@@ -68,10 +68,6 @@ export default function App() {
                           iconName = focused
                             ? "trending-up"
                             : "ios-trending-up-outline";
-                        } else if (route.name === "PlayerScreen") {
-                          iconName = focused
-                            ? "play-circle-sharp"
-                            : "play-circle-outline";
                         }
                         return (
                           <Ionicons name={iconName} size={size} color={color} />

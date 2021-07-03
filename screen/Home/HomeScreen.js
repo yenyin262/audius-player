@@ -36,11 +36,7 @@ export default function HomeScreen() {
         </View>
         <View style={styles.item}>
           <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("ExploreScreen", {
-                name: "TrendingPlaylistScreen",
-              })
-            }
+            onPress={() => navigation.navigate("TrendingPlaylistScreen")}
           >
             <Text style={styles.text}>Start Exploring</Text>
           </TouchableOpacity>

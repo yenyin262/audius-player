@@ -10,19 +10,12 @@ const TrendingPlaylistScreen = ({}) => {
 
   useEffect(() => {
     async function getTrendingTrack() {
-      //   const trendingTracks = await trendingPlaylist();
-
       const trendingTracks = trendingPlaylistMock();
       console.log(trendingTracks);
       setPlayList(trendingTracks.data);
     }
     getTrendingTrack();
   }, []);
-
-  // const navigateToPlayer = (track) => {
-  //   play(track);
-  //   navigation.navigate("PlayerScreen");
-  // };
 
   return (
     <SafeAreaView style={styles.container}>

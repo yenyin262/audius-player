@@ -2,12 +2,11 @@ import React from "react";
 import { View, FlatList } from "react-native";
 import TrendingItem from "../TrendingItem/TrendingItem";
 
-const TrendingPlaylist = ({ tracks, onPress }) => {
+const TrendingPlaylist = ({ tracks }) => {
   const renderItem = ({ item, index }) => {
     return (
       <TrendingItem
         rank={index + 1}
-        // onPress={() => onPress(item)}
         tracks={item.tracks}
         artwork={item.artwork["480x480"]}
         name={item.user.name}

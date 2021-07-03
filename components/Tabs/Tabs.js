@@ -32,7 +32,7 @@ const TABS_STATE = [
 // create a component
 const Tabs = ({ tracks, navigateToPlayer }) => {
   const [activeTab, setActiveTab] = useState(0);
-  console.log(navigateToPlayer, "navigate in tab component");
+
   return (
     <View>
       <View style={styles.tabsContainer}>
