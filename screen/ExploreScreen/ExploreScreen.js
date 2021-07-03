@@ -18,7 +18,7 @@ const ExploreScreen = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="ExploreScreen"
+        name="Explore"
         options={{ headerShown: false, title: null }}
       >
         {(props) => (

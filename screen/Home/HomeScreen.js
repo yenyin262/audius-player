@@ -12,25 +12,19 @@ export default function HomeScreen() {
       </View>
       <View style={styles.container}>
         <View style={styles.item}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("TracksListScreen")}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate("Music")}>
             <Text style={styles.text}>New Music Everyday</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.item}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("UserProfileScreen")}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
             <Text style={styles.text}>My Profile</Text>
           </TouchableOpacity>
         </View>
       </View>
       <View style={styles.container}>
         <View style={styles.item}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("ExploreScreen")}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate("Explore")}>
             <Text style={styles.text}>Start Exploring</Text>
           </TouchableOpacity>
         </View>
@@ -38,7 +32,7 @@ export default function HomeScreen() {
           <TouchableOpacity
             onPress={() => navigation.navigate("TrendingPlaylistScreen")}
           >
-            <Text style={styles.text}>Start Exploring</Text>
+            <Text style={styles.text}>Music topping the charts!</Text>
           </TouchableOpacity>
         </View>
       </View>

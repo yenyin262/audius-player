@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native";
 import HeaderBar from "../../components/HeaderBar/HeaderBar";
 import TracksList from "../../components/TracksList/TracksList";
 import { usePlayer } from "../../context/player";
