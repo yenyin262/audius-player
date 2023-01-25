@@ -30,7 +30,7 @@ Personal Developments:
 - Play Music from Independent Artists
 - Personalized playlists like Trending Now, Let Them DJ, Top Albums
 
-## Scripts
+## Commands
 
 1. git clone git@github.com:alarivan/audius-player.git
 2. cd audius/player
